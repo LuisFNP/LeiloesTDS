@@ -70,7 +70,7 @@ public class ProdutosDAO {
     }
     
     public void venderProduto(int id){
-        String sql = "UPDATE produtos SET status = 'vendido' WHERE id = ?";
+        String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
         try{
             PreparedStatement stmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -81,6 +81,28 @@ public class ProdutosDAO {
         }
     }
     
+    //Puxar todos os produtos com status 'Vendido'
+    public ArrayList<ProdutosDTO> listarProdutosVendidos(String status){
+        ArrayList<ProdutosDTO> listagem = new ArrayList<>();
+        String sql = "SELECT * FROM produtos WHERE status LIKE = 'Vendido'";
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement(sql);           
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.setValor(rs.getInt("valor"));
+                produto.setStatus(rs.getString("status"));
+                
+                listagem.add(produto);
+            }
+        }catch(SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+        return listagem;
+    }
         
 }
 
