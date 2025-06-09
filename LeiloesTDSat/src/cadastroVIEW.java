@@ -161,7 +161,6 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produtodao.cadastrarProduto(produto);
         
         limparTextos();
-        JOptionPane.showMessageDialog(this, "Produto cadastrado!");
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed

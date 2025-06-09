@@ -32,7 +32,10 @@ public class ProdutosDAO {
             stmt.setInt(2, produtos.getValor());
             stmt.setString(3, produtos.getStatus());
             stmt.execute();
+            
+            JOptionPane.showMessageDialog(null, "Produto cadastrada!");
         }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto");
             System.out.println("Error: "+ e.getMessage());
         }
         
