@@ -82,9 +82,9 @@ public class ProdutosDAO {
     }
     
     //Puxar todos os produtos com status 'Vendido'
-    public ArrayList<ProdutosDTO> listarProdutosVendidos(String status){
+    public ArrayList<ProdutosDTO> listarProdutosVendidos(){
         ArrayList<ProdutosDTO> listagem = new ArrayList<>();
-        String sql = "SELECT * FROM produtos WHERE status LIKE = 'Vendido'";
+        String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
         try{
             PreparedStatement stmt = this.conn.prepareStatement(sql);           
             ResultSet rs = stmt.executeQuery();
