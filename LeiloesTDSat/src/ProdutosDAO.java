@@ -69,7 +69,17 @@ public class ProdutosDAO {
         return listagem;
     }
     
-    
+    public void venderProduto(int id){
+        String sql = "UPDATE produtos SET status = 'vendido' WHERE id = ?";
+        try{
+            PreparedStatement stmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            stmt.setInt(1, id);
+            stmt.execute();
+        }catch(SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
     
         
 }
